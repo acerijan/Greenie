@@ -20,8 +20,8 @@ jobs:
 
       - name: Commit
         run: |
-          git config --global user.name "github-actions"
-          git config --global user.email "actions@github.com"
+          git config --global user.name "acerijan"
+          git config --global user.email "rijandai147@gmail.com"
           git add .
           git commit -m "auto update" || echo "no changes"
 

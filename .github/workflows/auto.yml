@@ -14,16 +14,22 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Make change
+      - name: Generate real work
         run: |
-          echo "update $(date)" >> log.txt
+          FILES=("learning.md" "notes.md" "ideas.md")
+          MESSAGES=("learned something new" "worked on project" "improved code" "fixed bug" "daily progress")
+
+          FILE=${FILES[$RANDOM % ${#FILES[@]}]}
+          MSG=${MESSAGES[$RANDOM % ${#MESSAGES[@]}]}
+
+          echo "- $(date): practiced DevOps and CI/CD" >> $FILE
 
       - name: Commit
         run: |
           git config --global user.name "acerijan"
           git config --global user.email "rijandai147@gmail.com"
           git add .
-          git commit -m "auto update" || echo "no changes"
+          git commit -m "$MSG $(date)" || echo "no changes"
 
       - name: Push
         run: git push

@@ -32,4 +32,6 @@ jobs:
           git commit -m "$MSG $(date)" || echo "no changes"
 
       - name: Push
-        run: git push
+        run: |
+          git pull --rebase
+          git push
